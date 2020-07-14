@@ -1,0 +1,16 @@
+ <!--上部に固定した黒色のナビゲーションバーを作る-->
+<header class= "navbar navbar-fixed-top navbar-inverse">
+  <!--ヘッダーのコンテンツをcontsinerによって、中心に寄せる-->
+  <div class= "container">
+      <!--勤怠システムと表示する埋め込みruby。ダミーのパスとして#を置きidを指定している-->
+   <%= link_to "勤怠システム", '#', id: "logo" %>
+      <!--nav=ナビゲーションリンク-->
+    <nav>
+      <!--navのnavbarを右寄せにする-->
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "トップ", '#' %></li>
+        <li><%= link_to "ログイン", '#' %></li>
+      </ul>
+    </nav>
+  </div>
+</header>
