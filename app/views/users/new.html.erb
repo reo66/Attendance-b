@@ -1,0 +1,14 @@
+<% provide(:title, 'sign up') %>
+<h1>アカウント作成</h1>
+
+<!--ローを指定-->
+<div class="row">
+<!--midiumサイズ、グリッド数6分で左右に3グリッドの余白を作る-->
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with(model: @user, local: true) do |f| %>
+    
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    
+  </div>
+</div>
