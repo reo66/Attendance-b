@@ -1,2 +1,28 @@
 <% provide(:title, 'login')%>
 <h1>ログイン</h1>
+
+<!--ローを指定-->
+<div class ="row">
+  <!--midiumサイズ、グリッド数6のカラムで左右に3グリッドの余白-->
+<div class ="col-md-6 col-md-offset-3">
+   
+  <%= form_with(model: @user, local:true) do |f| %>
+   <!--フォームの名前。下のtext_field :emailと関連づけている。classはCSS普及のために独自で命名-->
+  <%= f.label :email , class: "label-signup" %>
+   <!--emailを入力するフィールド-->
+  <%= f.text_field :email, class: "form-control" %>
+  
+  <%= f.label :password , class: "label-signup" %>
+  <%= f.password_field :password, class: "form-control" %>
+  
+  <%= f.submit "ログイン" , class: "btn btn-primary btn-block btn-login" %>
+  
+  <p>アカウント作成は<%=link_to "こちら" , signup_path %>から</p>
+  
+  
+  
+  <%end%>
+  </div>
+</div>
+
+
