@@ -3,4 +3,6 @@ Rails.application.routes.draw do
 #   ログインページ
   get '/signup', to: 'users#new'
 
+  resources :users
+
 end
