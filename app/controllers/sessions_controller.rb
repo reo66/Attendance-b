@@ -6,6 +6,7 @@ class SessionsController < ApplicationController
  
  # ログイン
  def create
+  # newアクションにレンダリング
   render :new
  end
  
