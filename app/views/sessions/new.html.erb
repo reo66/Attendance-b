@@ -5,8 +5,8 @@
 <div class ="row">
   <!--midiumサイズ、グリッド数6のカラムで左右に3グリッドの余白-->
 <div class ="col-md-6 col-md-offset-3">
-   
-  <%= form_with(model: @user, local:true) do |f| %>
+    <!--name属性にsessionというプレックスを付けlogin_pathに送信できるフォームを、デフォルトはajaxなのでlocalに指定-->
+  <%= form_with(scope: :session, url: login_path, local: true) do |f| %>
    <!--フォームの名前。下のtext_field :emailと関連づけている。classはCSS普及のために独自で命名-->
   <%= f.label :email , class: "label-signup" %>
    <!--emailを入力するフィールド-->
