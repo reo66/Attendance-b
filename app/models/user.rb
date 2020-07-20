@@ -13,4 +13,5 @@ class User < ApplicationRecord
                      format: { with: VALID_EMAIL_REGEX },
                     #   同じ値がないかの検証
                     uniquness: true  
+ has_secure_password
 end
