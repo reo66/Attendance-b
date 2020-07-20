@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # コールバックメソッドであるbefore_save=保存前、を呼び出す。
   # これに{ self.email = email.downcase }を渡している。
   # (ブロックはメアドを小文字にする内かつ、モデルインスタンスの関連データ)
-  before_save { self.email = email.downcace }
+  before_save { self.email = email.downcase }
   # 文字数制限かつ、空白で保存できない様に検証をかける
    validates :name,  presence: true, length: { maximum: 50 }
   # formatオプションの引数である正規表記を指定
@@ -12,9 +12,9 @@ class User < ApplicationRecord
   # メアドがsample@email.comの様な形かを検証（引数にVALID_EMAIL_REGEXを指定)
                      format: { with: VALID_EMAIL_REGEX },
                     #   同じ値がないかの検証
-                    uniquness: true  
+                    uniqueness: true  
 # password_digestカラムに追加したhas_secure_passwordの機能を利用                  
  has_secure_password
- validates :password, presence: true, length: { minimun: 6 }
+ validates :password, presence: true, length: { minimum: 6 }
 end
 
