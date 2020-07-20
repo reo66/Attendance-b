@@ -13,5 +13,8 @@ class User < ApplicationRecord
                      format: { with: VALID_EMAIL_REGEX },
                     #   同じ値がないかの検証
                     uniquness: true  
+# password_digestカラムに追加したhas_secure_passwordの機能を利用                  
  has_secure_password
+ validates :password, presence: true, length: { minimun: 6 }
 end
+
