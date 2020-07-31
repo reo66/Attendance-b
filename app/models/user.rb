@@ -2,6 +2,7 @@ class User < ApplicationRecord
   # コールバックメソッドであるbefore_save=保存前、を呼び出す。
   # これに{ self.email = email.downcase }を渡している。
   # (ブロックはメアドを小文字にする内かつ、モデルインスタンスの関連データ)
+  attr_accessor :remember_token
   before_save { self.email = email.downcase }
   # 文字数制限かつ、空白で保存できない様に検証をかける
    validates :name,  presence: true, length: { maximum: 50 }
