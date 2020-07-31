@@ -45,7 +45,6 @@ end
   # trueかfalseを返すメソッド
   def logged_in?
     # current_userが空でなければ(!は否定演算子)
-    
     !current_user.nil?
   end  
     

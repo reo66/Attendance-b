@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
  end
  
  # ログイン
-  
+
   
   
  def create
@@ -17,8 +17,8 @@ class SessionsController < ApplicationController
        redirect_to user
      else
        flash.now[:danger] = '認証に失敗しました。'
-   # newアクションにレンダリング
-   render :new
+      # newアクションにレンダリング
+       render :new
      end
  end
 
