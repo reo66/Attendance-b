@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~> 5.1.7'
+gem 'rails-i18n'
 # パスワードをハッシュ化するgem
 gem 'bcrypt' 
 gem 'bootstrap-sass'
