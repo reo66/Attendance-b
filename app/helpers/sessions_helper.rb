@@ -53,6 +53,7 @@ end
   
   def log_out
     # sessionで生成した、user.idを消去
+    forget(current_user)
     session.delete(:user_id)
     # 現在のuserが空になる
     @current_user = nil
