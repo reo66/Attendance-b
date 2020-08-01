@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  # userが消えると子因子として紐づいているattendancesも準じて(dependent)消える
+ has_many :attendances, dependent: :destroy
   # コールバックメソッドであるbefore_save=保存前、を呼び出す。
   # これに{ self.email = email.downcase }を渡している。
   # (ブロックはメアドを小文字にする内かつ、モデルインスタンスの関連データ)

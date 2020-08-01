@@ -8,7 +8,7 @@ class UsersController < ApplicationController
     # @userにUserテーブルのidが受け取った値である(params[:id])のレコードを見つけて代入
     @user = User.find(params[:id])
     @first_day = Date.current.beginning_of_month
-  @last_day = @first_day.end_of_month
+    @last_day = @first_day.end_of_month
   end
   
   def create
@@ -27,6 +27,10 @@ class UsersController < ApplicationController
   def user_params
      params.require(:user).permit(:name, :email, :password, :password_Confirmation)
   end  
+  
+  def basic_info_params
+      params.require(:user).permit(:department, :basic_time, :work_time)
+  end
   
 end
 
