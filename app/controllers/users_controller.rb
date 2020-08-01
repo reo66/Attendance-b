@@ -7,6 +7,8 @@ class UsersController < ApplicationController
   def show
     # @userにUserテーブルのidが受け取った値である(params[:id])のレコードを見つけて代入
     @user = User.find(params[:id])
+    @first_day = Date.current.beginning_of_month
+  @last_day = @first_day.end_of_month
   end
   
   def create

@@ -3,19 +3,48 @@
   <table class="table table-bordered table-condensed user-table">
     <tr>
       <td>時間管理表</td>
-      <td>指定勤務時間</td>
-      <td colspan="3">基本時間</td>
+      <td>指定勤務時間:<%= format_basic_info(@user.work_time) %></td>
+      <td colspan="3">基本時間:<%= format_basic_info(@user.basic_time) %></td>
       <td>初日</td>
     </tr>
-
     <tr>
-      <td>所属</td>
+      <td>所属<%= @user.department.present? ? @user.department : "未所属" %></td>
       <td>名前：<%= @user.name %></td>
        <td>コード</td>
        <td></td>
       <td>出勤日数</td>
       <td>締め</td>
-      
     </tr>
+  </table>
+</div>
+
+<div>
+  <table class="table table-bordered table-condensd table-hover" id="table-attendances">
+    <thead>
+      <tr>
+      <th>日付</th>
+      <th>曜日</th>
+      <th>勤怠登録</th>
+      <th>出勤時間</th>
+      <th>退勤時間</th>
+      <th>在社時間</th>
+      <th>備考</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <% (@first_day..@last_day).each do |day| %>
+      <tr>
+         <td><%= day %></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
+      <% end %>
+      </tr>
+    </tbody>
   </table>
 </div>
