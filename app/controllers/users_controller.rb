@@ -28,9 +28,7 @@ class UsersController < ApplicationController
      params.require(:user).permit(:name, :email, :password, :password_Confirmation)
   end  
   
-  def basic_info_params
-      params.require(:user).permit(:department, :basic_time, :work_time)
-  end
+  
   
 end
 
