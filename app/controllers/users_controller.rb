@@ -27,9 +27,13 @@ class UsersController < ApplicationController
   
   
 def edit
+  
 end  
   
   
+def eit_basic_info 
+end
+
   private
   
   def user_params
