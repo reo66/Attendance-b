@@ -15,32 +15,35 @@ class UsersController < ApplicationController
   end
   
   def create
-        @user = User.new(user_params)
-      if @user.save
-        log_in @user # 保存成功後、ログインします。
-        flash[:success] = '新規作成に成功しました。'
-        redirect_to @user
-      else
-        render :new
-      end
+    @user = User.new(user_params)
+    if @user.save
+      log_in @user # 保存成功後、ログインします。
+      flash[:success] = '新規作成に成功しました。'
+      redirect_to @user
+    else
+      render :new
+    end  
   end
   
   
-def edit
+  def edit
    @user = User.find(params[:id])
-end  
+  end
   
-  
-def eit_basic_info 
-end
-
+  def update
+    @user = User.find(params[:id])
+     if @user.update_attributes(user_params)
+       flash[:success] = "ユーザー情報を更新しました"
+       redirect_to @user
+     else
+      render :edit      
+     end
+  end 
+   
   private
   
   def user_params
-     params.require(:user).permit(:name, :email, :password, :password_Confirmation)
+   params.require(:user).permit(:name, :email, :password, :password_Confirmation)
   end  
-  
-  
-  
 end
 
