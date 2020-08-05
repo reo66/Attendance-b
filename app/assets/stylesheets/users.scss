@@ -5,6 +5,10 @@
   text-align: left;
   font-weight:bold;
 }
+  
+
+
+
 
 /* ユーザー勤怠情報テーブル */
 
@@ -17,6 +21,9 @@
   td {
     vertical-align: middle;
     text-align: left;
+  }
+  .line tr:nth-child(odd) td{
+    background: #F0FFFF;
   }
 }
 
