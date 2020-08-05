@@ -13,6 +13,7 @@
 /* ユーザー勤怠情報テーブル */
 
 #table-attendances {
+  margin-top:30px;
   th {
     vertical-align: middle;
     text-align: left;
@@ -26,6 +27,8 @@
   .line tr:nth-child(odd) td{
     background: #F0FFFF;
   }
+  
+  
 }
 
 /* 入力フォーム */
