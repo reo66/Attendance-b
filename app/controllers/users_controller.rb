@@ -61,5 +61,13 @@ end
   def basic_info_params
       params.require(:user).permit(:basic_time, :work_time)
   end
-end
+  
+  
+  def logged_in_user
+    unless logged_in?
+      flash[:danger] = "ログインしてください。"
+      redirect_to login_url
+    end
+  end
+end  
 
