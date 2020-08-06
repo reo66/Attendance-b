@@ -4,6 +4,8 @@ gem 'rails', '~> 5.1.7'
 gem 'rails-i18n'
 # パスワードをハッシュ化するgem
 gem 'bcrypt' 
+# 架空のサンプルuserを生成してくれる
+gem 'faker'
 gem 'pry-rails'
 gem 'bootstrap-sass'
 gem 'puma', '~> 3.7'
