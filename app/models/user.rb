@@ -15,7 +15,9 @@ class User < ApplicationRecord
   # メアドがsample@email.comの様な形かを検証（引数にVALID_EMAIL_REGEXを指定)
                      format: { with: VALID_EMAIL_REGEX },
                     #   同じ値がないかの検証
-                    uniqueness: true  
+                    uniqueness: true
+  validates :basic_time, presence: true
+  validates :work_time, presence: true
 # password_digestカラムに追加したhas_secure_passwordの機能を利用                  
  has_secure_password
  validates :password, presence: true, length: { minimum: 6 }

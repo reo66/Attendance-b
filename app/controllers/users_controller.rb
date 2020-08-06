@@ -43,6 +43,10 @@ class UsersController < ApplicationController
   
 def edit_basic_info
   @user = User.find(params[:id])
+end 
+
+def update_basic_info
+  @user = User.find(params[:id])
 end  
    
   private
@@ -50,5 +54,9 @@ end
   def user_params
    params.require(:user).permit(:name, :email, :password, :password_Confirmation)
   end  
+  
+  def basic_info_params
+      params.require(:user).permit(:basic_time, :work_time)
+  end
 end
 
