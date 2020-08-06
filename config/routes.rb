@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'attendances/def'
+
+  get 'attendances/edit_one_month'
+
  root 'static_pages#top'
 #  新規登録
   get '/signup', to: 'users#new'
@@ -11,8 +15,10 @@ Rails.application.routes.draw do
   
   resources :users do
     member do
+      
       get 'edit_basic_info'
       patch 'update_basic_info'
+      # 勤怠編集
       get 'attendances/edit_one_month'
     end
   end

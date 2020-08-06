@@ -47,7 +47,9 @@ end
 
 def update_basic_info
   @user = User.find(params[:id])
-end  
+end 
+
+
    
   private
   

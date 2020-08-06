@@ -20,7 +20,7 @@ class User < ApplicationRecord
   validates :work_time, presence: true
 # password_digestカラムに追加したhas_secure_passwordの機能を利用                  
  has_secure_password
- validates :password, presence: true, length: { minimum: 6 }
+ validates :password, presence: true, length: { minimum: 6 },allow_nil: true
 
 
 # 渡された文字列のハッシュ値を返します。
