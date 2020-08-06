@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   befor_action :logged_in_user,only: [:show, :edit, :update]
+  befor_action :correct_user,only:[:edit, :update]
   
   def index
     @users = User.paginate(page: params[:page])
@@ -62,12 +63,17 @@ end
       params.require(:user).permit(:basic_time, :work_time)
   end
   
-  
+  # ログインしているか？
   def logged_in_user
     unless logged_in?
       flash[:danger] = "ログインしてください。"
       redirect_to login_url
     end
+  end
+  
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to(root_url) unless @user == current_user
   end
 end  
 
