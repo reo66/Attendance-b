@@ -16,6 +16,8 @@ class User < ApplicationRecord
                      format: { with: VALID_EMAIL_REGEX },
                     #   同じ値がないかの検証
                     uniqueness: true
+   # 2〜30文字の文字数制限。allow_blankで空の入力はバリデーションをスルー
+  validates :department, length: { in: 2..30 }, allow_blank: true
   validates :basic_time, presence: true
   validates :work_time, presence: true
 # password_digestカラムに追加したhas_secure_passwordの機能を利用                  
