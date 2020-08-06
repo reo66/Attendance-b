@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  befor_action :set_user,only:[:show, :edit, :update]
   befor_action :logged_in_user,only: [:show, :edit, :update]
   befor_action :correct_user,only:[:edit, :update]
   
@@ -62,6 +63,10 @@ end
   def basic_info_params
       params.require(:user).permit(:basic_time, :work_time)
   end
+  
+  def set_user
+    @user = User.find(params[:id])
+  end  
   
   # ログインしているか？
   def logged_in_user
