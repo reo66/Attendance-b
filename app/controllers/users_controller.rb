@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  befor_action :logged_in_user,only: [:show, :edit, :update]
   
   def index
     @users = User.paginate(page: params[:page])
