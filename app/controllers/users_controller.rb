@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_user,only:[:show, :edit, :update, :edit_basic_info, :update_basic_info]
-  before_action :logged_in_user,only: [:index, :show, :edit, :update, :edit_basic_info, :update_basic_info]
+  before_action :set_user,only:[:show, :edit,:update,:edit_basic_info,:update_basic_info]
+  before_action :logged_in_user,only: [:index, :show]
   before_action :correct_user,only:[:edit, :update]
+  before_action :admin_user, only: [:destroy, :edit_basic_info, :update_basic_info]
   
   def index
     @users = User.paginate(page: params[:page])
@@ -32,21 +33,27 @@ class UsersController < ApplicationController
   end
   
   def update
-   
-       
+    if @user.update_attributes(user_params)
+      flash[:success] = "ユーザー情報を更新しました。"
+      redirect_to @user
+    else
+      render :edit      
+    end
   end 
   
   def edit_basic_info
+  end  
    
 
-    def update_basic_info
-        if @user.update_attributes(basic_info_params)
-        else
-          flash[:danger] = "更新は失敗しました。" + @user.errors.full_messages.join("<br>")
-        end
-      render edit_basic_info
+  def update_basic_info
+    if @user.update_attributes(basic_info_params)
+      flash[:success] = "更新に成功しました"
+    else
+      flash[:danger] = "更新は失敗しました。" + @user.errors.full_messages.join("<br>")
     end
-  end  
+      redirect_to @user
+  end
+  
 
 
    
@@ -57,6 +64,6 @@ class UsersController < ApplicationController
   end  
   
   def basic_info_params
-      params.require(:user).permit(:basic_time, :work_time)
+  params.require(:user).permit(:basic_time, :work_time)
   end
-end
+end  

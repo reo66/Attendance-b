@@ -12,7 +12,11 @@
 
     <% @users.each do |user| %>
       <tr>
-        <td><%= link_to user.name, user %></td>
+        <td>
+          <%= link_to user.name, user %>&nbsp
+          <%= "|" %>&nbsp
+          <%= link_to "編集", edit_basic_info_user_path(user) %>
+        </td>
       </tr>
     <% end %>
   </table>
