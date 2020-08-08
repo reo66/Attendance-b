@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
   before_action :set_user,only:[:show, :edit,:update,:edit_basic_info,:update_basic_info]
-  before_action :logged_in_user,only: [:index, :show]
+  before_action :logged_in_user,only: [:index,:edit,:update,:edit_basic_info, :update_basic_info]
   before_action :correct_user,only:[:edit, :update]
-  before_action :admin_user, only: [:destroy, :edit_basic_info, :update_basic_info]
+  before_action :admin_user, only: [:edit_basic_info, :update_basic_info]
   before_action :set_one_month,only: :show
   
   def index
@@ -14,12 +14,11 @@ class UsersController < ApplicationController
   end  
   
   def show
-    # @userにUserテーブルのidが受け取った値である(params[:id])のレコードを見つけて代入
-    @first_day = Date.current.beginning_of_month
-    @last_day = @first_day.end_of_month
+    @worked_sum = @attendances.where.not(started_at: nil).count
   end
   
   def create
+    @user = User.new(user_params)
     if @user.save
       log_in @user # 保存成功後、ログインします。
       flash[:success] = '新規作成に成功しました。'
@@ -58,7 +57,7 @@ class UsersController < ApplicationController
 
 
    
-  private
+private
   
   def user_params
    params.require(:user).permit(:name, :email, :department, :password, :password_Confirmation)
@@ -67,4 +66,4 @@ class UsersController < ApplicationController
   def basic_info_params
   params.require(:user).permit(:basic_time, :work_time)
   end
-end  
+end

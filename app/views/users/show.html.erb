@@ -3,7 +3,7 @@
   <table class="table table-bordered table-condensed user-table">
     <tr>
       <td>
-        <%= link_to "◀︎",user_path(date:@first_day.prev_month), class: "btn btn-primary" %>
+        <%= link_to "◀︎" ,user_path(date:@first_day.prev_month), class: "btn btn-primary" %>
         &nbsp;&nbsp;
         <%=l(@first_day, format: :middle) %>&nbsp;&nbsp;時間管理表
         &nbsp;&nbsp;
@@ -23,7 +23,7 @@
     </tr>
   </table>
 </div>
-<%= link_to "勤怠を編集", attendances_edit_one_month_user_path(date: @first_day), class: "btn btn-primary" %>
+  <%= link_to "勤怠を編集", attendances_edit_one_month_user_path(date: @first_day), class: "btn btn-primary" %>
 <div>
   <table class="table table-bordered table-condensd table-hover" id="table-attendances">
     <thead>
@@ -36,7 +36,7 @@
         <th rowspan="2">備考</th>
       </tr>
       <tr>
-         <th>時</th>
+        <th>時</th>
         <th>分</th>
         <th></th>
         <th>時</th>
@@ -45,10 +45,10 @@
       </tr>
     </thead>
     <tbody class="line">
-      <% (@first_day..@last_day).each do |day| %>
+      <% @attendances.each do |day| %>
       <tr>
-         <td><%= l(day, format: :short) %></td>
-          <td><%= $days_of_the_week[day.wday] %></td>
+         <td><%= l(day.worked_on, format: :short) %></td>
+          <td><%= $days_of_the_week[day.worked_on.wday] %></td>
           <td></td>
           <td></td>
           <td></td>
