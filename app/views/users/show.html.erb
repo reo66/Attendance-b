@@ -46,9 +46,17 @@
     </thead>
     <tbody class="line">
       <% @attendances.each do |day| %>
+      <% css_class = 
+    case $days_of_the_week[day.worked_on.wday]
+        when '土'
+          'text-primary'
+        when '日'
+          'text-danger'
+        end
+      %>
       <tr>
          <td><%= l(day.worked_on, format: :short) %></td>
-          <td><%= $days_of_the_week[day.worked_on.wday] %></td>
+          <td class="<%= css_class %>"><%= $days_of_the_week[day.worked_on.wday] %></td>
           <td><%= l(day.started_at,format: :hour) if day.started_at.present? %></td>
            <td><%= l(day.started_at,format: :min) if day.started_at.present? %></td>
           <td> <!--繰り返し処理で表示している時間と本日が同じかつ出勤時間が空だったら、出勤ボタンを表示-->
