@@ -16,6 +16,10 @@
           <%= link_to user.name, user %>&nbsp
           <%= "|" %>&nbsp
           <%= link_to "編集", edit_basic_info_user_path(user) %>
+          <%= "|" %>&nbsp
+          <%= link_to "削除", user, method: :delete,
+                data: { confirm: "削除してよろしいですか？" }
+           %>
         </td>
       </tr>
     <% end %>
