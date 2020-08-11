@@ -27,7 +27,9 @@ class AttendancesController < ApplicationController
     redirect_to @user
   end  
 
-
+  def edit_one_month
+  end
+  
 
 
   def update_one_month

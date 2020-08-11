@@ -6,6 +6,7 @@ gem 'rails-i18n'
 gem 'bcrypt' 
 # 架空のサンプルuserを生成してくれる
 gem 'faker'
+gem 'byebug'
 gem 'pry-rails'
 gem 'bootstrap-sass'
 # ページネーション機能
