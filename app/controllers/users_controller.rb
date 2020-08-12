@@ -7,9 +7,9 @@ class UsersController < ApplicationController
   before_action :admin_or_correct_user,only: :show
   
   def index
-    @users = User.paginate(page: params[:page])
-  end
-  
+   @users =User.paginate(page: params[:page]).where("name LIKE ?", "%#{params[:search]}%")
+  end  
+
   def new
     @user = User.new
   end  
