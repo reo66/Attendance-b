@@ -1,0 +1,65 @@
+@charset "UTF-8";
+/* ユーザー情報テーブル */
+.user-table {
+  vertical-align: middle;
+  text-align: left;
+  font-weight: bold; }
+
+/* ユーザー勤怠情報テーブル */
+#table-attendances {
+  margin-top: 30px; }
+  #table-attendances th {
+    vertical-align: middle;
+    text-align: left;
+    font-weight: bold; }
+  #table-attendances td {
+    vertical-align: middle;
+    text-align: left; }
+  #table-attendances .line tr:nth-child(odd) td {
+    background: #F0FFFF; }
+  #table-attendances .sat {
+    color: #0000ff; }
+
+/* 入力フォーム */
+.label-signup {
+  margin-top: 5px; }
+
+.btn-signup {
+  margin-top: 10px; }
+
+.label-user--edit {
+  margin-top: 5px; }
+
+.btn-user--edit {
+  margin-top: 10px; }
+
+/* ユーザー一覧ページ */
+#table-users td {
+  vertical-align: middle; }
+#table-users .form-group[type=search] {
+  -webkit-appearance: none;
+  display: inline-block;
+  margin-right: 0;
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 200px;
+  height: 40px;
+  font-size: 100%;
+  box-sizing: border-box;
+  border-radius: 5px 0 0 5px;
+  border: 1px solid #ccc;
+  border-right: none; }
+#table-users input[type=submit] {
+  -webkit-appearance: none;
+  display: inline-block;
+  padding: 0 10px;
+  color: #fff;
+  width: 50px;
+  height: 40px;
+  font-size: 100%;
+  vertical-align: top;
+  border: none;
+  border-radius: 0 5px 5px 0;
+  background: #1f76e2; }
+
+/*# sourceMappingURL=users.css.map */

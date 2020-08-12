@@ -62,7 +62,7 @@ end
     update_attribute(:remember_digest, nil)
   end
   
-  #self.はUser.を意味する
+  #self.はUser.を示す
   def self.serch(search)
     if serch
       User.where(["name LIKE ?", "%#{serch}%"])
