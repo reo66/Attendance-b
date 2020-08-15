@@ -8,6 +8,7 @@ gem 'bcrypt'
 gem 'faker'
 gem 'byebug'
 gem 'ransack'
+gem 'rounding'
 gem 'pry-rails'
 gem 'bootstrap-sass'
 # ページネーション機能
