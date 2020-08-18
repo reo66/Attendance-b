@@ -15,7 +15,7 @@
     </thead>
     <tbody class="line">
       <% @attendances.each do |day| %>
-        <%= f.fields_for "attendances[]", day do |attendance| %>
+      %= f.fields_for "attendances[]", day do |attendance| %>
       <% css_class = 
         case $days_of_the_week[day.worked_on.wday]
           when '土'
@@ -27,13 +27,13 @@
         <tr>
           <td><%= l(day.worked_on, format: :short) %></td>
           <td class="<%= css_class %>"><%= $days_of_the_week[day.worked_on.wday] %></td>
-          <% if (Date.current < day.worked_on) %>
-            <td><%= attendance.time_field :started_at, readonly: true, class: "form-control" %></td>
-            <td><%= attendance.time_field :finished_at, readonly: true, class: "form-control" %></td>
-          <% else %>
+            <% if (Date.current < day.worked_on) %>
+          <td><%= attendance.time_field :started_at, readonly: true, class: "form-control" %></td>
+          <td><%= attendance.time_field :finished_at, readonly: true, class: "form-control" %></td>
+            <% else %>
             <td><%= attendance.time_field :started_at, class: "form-control" %></td>
             <td><%= attendance.time_field :finished_at, class: "form-control" %></td>
-        <% end %>
+            <% end %>
           <td>
             <% if day.started_at.present? && day.finished_at.present? %>
             <%= working_times(day.started_at, day.finished_at) %>
@@ -47,8 +47,8 @@
   </table>
 </div>
 
-<div class="center">
-  <%= link_to "キャンセル",user_path(date:@first_day), class: "btn btn-default btn-md-10  active" %>
-  <%= f.submit "編集を保存する", class: "btn btn-default btn-md-10  active" %>
-</div>
+  <div class="center">
+    <%= link_to "キャンセル",user_path(date:@first_day), class: "btn btn-default btn-md-10  active" %>
+    <%= f.submit "編集を保存する", class: "btn btn-default btn-md-10  active" %>
+  </div>
 <% end %>

@@ -1,29 +1,27 @@
-<% provide(:title, 'login')%>
-<h1>ログイン</h1>
-
+<% provide(:title, 'ログイン')%>
+  <h1>ログイン</h1>
 <!--ローを指定-->
-<div class ="row">
-  <!--midiumサイズ、グリッド数6のカラムで左右に3グリッドの余白-->
-<div class ="col-md-6 col-md-offset-3">
-    <!--name属性にsessionというプレックスを付けlogin_pathに送信できるフォームを、デフォルトはajaxなのでlocalに指定-->
-  <%= form_with(scope: :session, url: login_path, local: true) do |f| %>
-   <!--フォームの名前。下のtext_field :emailと関連づけている。classはCSS普及のために独自で命名-->
-  <%= f.label :email , "メールアドレス", class: "label-signup" %>
-   <!--emailを入力するフィールド-->
-  <%= f.text_field :email, class: "form-control" %>
-  
-  <%= f.label :password , "パスワード", class: "label-signup" %>
-  <%= f.password_field :password, class: "form-control" %>
-  
-  <%= f.label :remember_me, class: "checkbox inline checkbox-login", for: "remember-me" do %>
-        <%= f.check_box :remember_me, id: "remember-me" %>
-        <span>ログイン情報を記憶する</span>
-      <% end %>
+  <div class ="row">
+    <!--midiumサイズ、グリッド数6のカラムで左右に3グリッドの余白-->
+    <div class ="col-md-6 col-md-offset-3">
+        <!--name属性にsessionというプレックスを付けlogin_pathに送信できるフォームを、デフォルトはajaxなのでlocalに指定-->
+      <%= form_with(scope: :session, url: login_path, local: true) do |f| %>
+       <!--フォームの名前。下のtext_field :emailと関連づけている。classはCSS普及のために独自で命名-->
+      <%= f.label :email , "メールアドレス", class: "label-signup" %>
+       <!--emailを入力するフィールド-->
+      <%= f.text_field :email, class: "form-control" %>
       
-  <%= f.submit "ログイン" , class: "btn btn-primary btn-block btn-login" %>
-  <%end%>
-  <p>アカウント作成は<%=link_to "こちら" , signup_path %>から</p>
+      <%= f.label :password , "パスワード", class: "label-signup" %>
+      <%= f.password_field :password, class: "form-control" %>
+      
+      <%= f.label :remember_me, class: "checkbox inline checkbox-login", for: "remember-me" do %>
+      <%= f.check_box :remember_me, id: "remember-me" %>
+       <span>ログイン情報を記憶する</span>
+      <% end %>
+      <%= f.submit "ログイン" , class: "btn btn-primary btn-block btn-login" %>
+      <% end %>
+        <p>アカウント作成は<%=link_to "こちら" , signup_path %>から</p>
+    </div>
   </div>
-</div>
 
 

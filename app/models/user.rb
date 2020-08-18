@@ -13,16 +13,16 @@ class User < ApplicationRecord
   # 文字数制限かつ、空白で保存できない様に検証をかける
   validates :email, presence: true, length: { maximum: 100 },
   # メアドがsample@email.comの様な形かを検証（引数にVALID_EMAIL_REGEXを指定)
-                     format: { with: VALID_EMAIL_REGEX },
-                    #   同じ値がないかの検証
-                    uniqueness: true
+  format: { with: VALID_EMAIL_REGEX },
+  #   同じ値がないかの検証
+  uniqueness: true
  # 2〜30文字の文字数制限。allow_blankで空の入力はバリデーションをスルー
   validates :department, length: { in: 2..30 }, allow_blank: true
   validates :basic_time, presence: true
   validates :work_time, presence: true
 # password_digestカラムに追加したhas_secure_passwordの機能を利用                  
- has_secure_password
- validates :password, presence: true, length: { minimum: 6 },allow_nil: true
+  has_secure_password
+  validates :password, presence: true, length: { minimum: 6 },allow_nil: true
 
 
 # 渡された文字列のハッシュ値を返します。
@@ -41,27 +41,21 @@ class User < ApplicationRecord
     SecureRandom.urlsafe_base64
   end
   
-  
   # 永続セッションのためハッシュ化したトークンをデータベースに記憶します。
   def remember
     self.remember_token = User.new_token
     update_attribute(:remember_digest, User.digest(remember_token))
   end
-  
-  
   # トークンがダイジェストと一致すればtrueを返します。
-def authenticated?(remember_token)
-  # ダイジェストが存在しない場合はfalseを返して終了します。
-  return false if remember_digest.nil?
-  BCrypt::Password.new(remember_digest).is_password?(remember_token)
-end
-  
-  
+  def authenticated?(remember_token)
+    # ダイジェストが存在しない場合はfalseを返して終了します。
+    return false if remember_digest.nil?
+    BCrypt::Password.new(remember_digest).is_password?(remember_token)
+  end
    # ユーザーのログイン情報を破棄します。
   def forget
     update_attribute(:remember_digest, nil)
   end
-  
   #self.はUser.を示す
   def self.serch(search)
     if serch

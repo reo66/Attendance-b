@@ -59,18 +59,16 @@ class UsersController < ApplicationController
     else
       flash[:danger] = "更新は失敗しました。" + @user.errors.full_messages.join("<br>")
     end
-      redirect_to @user
+     redirect_to @user
   end
   
-
-   
-private
-  
+  private
+    
   def user_params
-   params.require(:user).permit(:name, :email, :department, :password, :password_Confirmation)
+    params.require(:user).permit(:name, :email, :department, :password, :password_Confirmation)
   end  
-  
+    
   def basic_info_params
-  params.require(:user).permit(:basic_time, :work_time)
+    params.require(:user).permit(:basic_time, :work_time)
   end
 end

@@ -34,22 +34,22 @@ module SessionsHelper
   end  
 
   
-def current_user
-    # user_id がsession[:user_id]であること前提
-   if (user_id = session[:user_id])
-      # まず@current_userを評価。次にUser.find_by(id: user_id)は空のuserを示すか？を評価
-      @current_user ||= User.find_by(id: user_id)
-      # 上記でなければ、 user_id がcookies.signed[:user_id]であることを評価
-   elsif (user_id = cookies.signed[:user_id])
-      # Userからidカラムの暗号化したcookiesの[:user_id]を見つける
-      user = User.find_by(id: user_id)
-  # cookie.signed[:user_id]で検索したuserが存在し、かつ、そのuserのremember_digestとcookie[:remember_token]が一致
-      if user && user.authenticated?(cookies[:remember_token])
-        log_in user
-        @current_user = user
-      end
-   end
-end
+  def current_user
+      # user_id がsession[:user_id]であること前提
+     if (user_id = session[:user_id])
+        # まず@current_userを評価。次にUser.find_by(id: user_id)は空のuserを示すか？を評価
+        @current_user ||= User.find_by(id: user_id)
+        # 上記でなければ、 user_id がcookies.signed[:user_id]であることを評価
+     elsif (user_id = cookies.signed[:user_id])
+        # Userからidカラムの暗号化したcookiesの[:user_id]を見つける
+        user = User.find_by(id: user_id)
+    # cookie.signed[:user_id]で検索したuserが存在し、かつ、そのuserのremember_digestとcookie[:remember_token]が一致
+        if user && user.authenticated?(cookies[:remember_token])
+          log_in user
+          @current_user = user
+        end
+     end
+  end
 
   def current_user?(user)
     user == current_user
