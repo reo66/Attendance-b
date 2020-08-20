@@ -15,7 +15,7 @@
     </thead>
     <tbody class="line">
       <% @attendances.each do |day| %>
-      %= f.fields_for "attendances[]", day do |attendance| %>
+      <%= f.fields_for "attendances[]", day do |attendance| %>
       <% css_class = 
         case $days_of_the_week[day.worked_on.wday]
           when '土'
